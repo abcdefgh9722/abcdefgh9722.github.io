@@ -1,0 +1,145 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/* 清除列表前面的符号样式 */
+ul,ol{
+    list-style: none;
+}
+/* 清除超链接的下划线 */
+a{
+    text-decoration: none;
+}
+/* 第一部分 */
+.box1{
+width: 1102px;
+height: 100px;
+background-color: #f29044;
+margin: auto;
+}
+.box1 .left{
+    width: 205px;
+    height: 54px;
+    background-color: #36b559;
+    float: left;
+    margin-top: 23px;
+}
+.box1 .right{
+    width: 297px;
+    height: 52px;
+    background-color: #3754b3;
+    float: right;
+    margin-top: 25px;
+}
+/* 第二部分 */
+.box2{
+    width: 100%;
+    height: 60px;
+    background-color: #2f2f2f;
+}
+.center{
+    width: 1102px;
+    height: 60px;
+    background-color: yellow;
+    margin: auto;
+}
+/* 第三部分 */
+.box3{
+    width: 100%;
+    height: 430px;
+    background-color: blue;
+}
+/* 第四部分 */
+.box4{
+    width: 1102px;
+    height: 250px;
+    margin: auto;
+    margin-bottom: 30px;
+}
+.box4 .left{
+    width: 492px;
+    height: 250px;
+    background-color: purple;
+    float: left;
+    margin-right: 22px;
+}
+.box4 .middle{
+    width: 348px;
+    height: 250px;
+    background-color: #F5F5F5;
+    float: left;
+}
+.box4 .right{
+    width: 240px;
+    height: 250px;
+    background-color: deeppink;
+    float: left;
+}
+/* 第五部分 */
+.box5{
+    width: 100%;
+    height: 288px;
+    background-color: #F5F5F5;
+    overflow: hidden;/* margin冲突解决方法1*/
+    /* border-top: 1px solid transparent;margin冲突解决方法二 */
+}
+.box-white{
+    width: 1054px;
+    height: 197px;
+    background-color: orange;
+    margin: auto;
+    margin-top: 47px;/* mardin-top与上面的margin-bottom发生冲突*/
+    /* padding: 20px 32px 20px 20px; */
+}
+.box5 .box-white .left{
+    width: 275px;
+    height: 157px;
+    background-color: deeppink;
+    float: left;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.box5 .box-white .right{
+    width: 700px;
+    height: 157px;
+    background-color: purple;
+    float: right;
+    margin-top: 20px;
+    margin-right: 32px;
+}
+/* 第六部分 */
+.box6{
+    width: 1102px;
+    height: 418px;
+    background-color: orange;
+    margin: auto;
+    overflow: hidden;
+}
+.top{
+    width: 1102px;
+    height: 70px;
+    background-color: cornflowerblue;
+    margin-top: 15px;
+    margin-bottom: 3px
+}
+.bottom{
+    width: 1102px;
+    height: 290px;
+    background-color: yellow;
+}
+.bottom div{
+    width: 262px;
+    height: 290px;
+    background-color: #eff4f5;
+    float: left;
+    margin-right: 18px;
+}
+.bottom .last{
+    margin-right: 0;
+}
+/* 第七部分 */
+.box7{
+    width: 100%;
+    height: 125px;
+    background-color: #000000;
+}
