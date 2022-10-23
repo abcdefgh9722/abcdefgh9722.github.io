@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>幸运大转盘</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+            outline: none;
+        }
+        .wrapper {
+            position: relative;
+            height: 200px;
+            width: 200px;
+            padding: 20px;
+            margin: 20px;
+            background-color: #c0381f;
+            box-shadow: 0 0 10px #000;
+            border-radius: 50%;
+        }
+        .panel {
+            position: relative;
+            height: 200px;
+            width: 200px;
+            background-color: #b7b7b7;
+            border-radius: 100px;
+        }
+        .pointer {
+            position: absolute;
+            z-index: 10;
+            height: 30px;
+            width: 30px;
+            /*left: 50%;*/
+            /*top: 50%;*/
+            left: 79px;
+            top: 79px;
+            /*transform: translate(-50%, -50%);*/
+            background-color: #dc5b5b;
+            color: #fff899;
+            border-radius: 50%;
+            border: 1px solid #c0381f;
+            text-align: center;
+            font-size: 12px;
+            line-height: 15px;
+            padding: 6px;
+            transform-origin: center;
+            transition: transform 3s cubic-bezier(.2,.93,.43,1);
+        }
+        .pointer::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: -24px;
+            /*left: 50%;*/
+            left: 14px;
+            /*transform: translateX(-50%);*/
+            border-style: solid;
+            border-width: 12px 6px;
+            border-color: transparent transparent #dc5b5b transparent;
+        }
+
+        .sector {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 200px;
+            border-radius: 0 100px 100px 0;
+            overflow: hidden;
+            transform-origin: left center;
+        }
+        .sector-inner {
+            width: 40px;
+            height: 195px;
+            padding: 5px 3px 0 57px;
+            background: #ffeab1;
+            transform: translateX(-100px) rotate(36deg);
+            transform-origin: right center;
+            border-radius: 100px 0 0 100px;
+            text-align: center;
+        }
+        .sector-inner span {
+            display: block;
+            transform-origin: center;
+            transform: rotate(-19deg);
+            color: #d46854;
+        }
+        .light {
+            position: absolute;
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            top: 5px;
+            left: 115px;
+            transform-origin: 5px 115px;
+        }
+        .light-twinkling {
+            animation: 1s twinkling 3, 100ms 3s twinkling 3;
+        }
+        .light:nth-child(2n) {
+            background-color: #fafce7;
+        }
+        .light:nth-child(2n + 1) {
+            background-color: #ffe58b;
+        }
+        .sector:nth-child(1) {
+            transform: rotate(-18deg);
+        }
+        .sector:nth-child(2n + 1) .sector-inner {
+            background: #fef6e0;
+        }
+        .sector:nth-child(2n) .sector-inner {
+            background: #fff;
+        }
+        @keyframes twinkling {
+            50% {
+                background: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="panel">
+        <div class="pointer">开始抽奖</div>
+    </div>
+</div>
+<div class="test"></div>
+<script>
+    let lastAngle = -18,lightAngle = 36;
+    const texts = ['水饺', '小碗面', '饼', '鸡腿饭', '炸鸡饭', '螺狮粉', '水饺', '小碗面', '螺狮粉', '外卖'];
+    window.texts = texts;
+    let fragment = document.createDocumentFragment();
+	for (let i = 0; i < texts.length; i++) {
+		let sector = document.createElement('div');
+		sector.className = 'sector';
+		sector.style.transform = `rotate(${lastAngle}deg)`;
+		lastAngle += 36;
+        let innerSector = document.createElement('div');
+	    innerSector.className = 'sector-inner';
+	    let span = document.createElement("span");
+	    span.innerText = texts[i];
+        innerSector.append(span);
+        sector.append(innerSector);
+        fragment.append(sector);
+	}
+	const panel = document.getElementsByClassName('panel')[0];
+	panel.append(fragment);
+
+	// wrapper
+    const wrapper = document.getElementsByClassName('wrapper')[0];
+    let fragmentLight = document.createDocumentFragment();
+	for (let i = 0; i < 10; i++) {
+        const light = document.createElement('div');
+        light.className = 'light';
+        if (i > 0) {
+        	light.style.transform = `rotate(${lightAngle}deg)`;
+        	lightAngle += 36;
+        }
+        fragmentLight.append(light);
+	}
+    wrapper.append(fragmentLight);
+</script>
+<script src="index.js"></script>
+</body>
+</html>
